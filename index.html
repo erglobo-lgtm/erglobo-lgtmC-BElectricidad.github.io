@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C&B Electricidad — Pack Completo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@700;800;900&family=Black+Han+Sans&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   VARIABLES & RESET
+============================================================ */
+:root {
+  --navy:        #07112A;
+  --navy-mid:    #0E1E40;
+  --navy-light:  #152850;
+  --gold:        #F5A623;
+  --gold-bright: #FFD000;
+  --gold-dark:   #C07A00;
+  --blue-elec:   #0099FF;
+  --blue-glow:   #00CFFF;
+  --white:       #FFFFFF;
+  --gray:        #8899BB;
+  --radius:      8px;
+  --transition:  0.3s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Barlow', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
+
+/* ============================================================
+   NAVBAR
+============================================================ */
+#navbar {
+  position: fixed; top: 0; width: 100%; z-index: 1000;
+  background: rgba(7,17,42,0.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(245,166,35,0.2);
+  padding: 0 2rem; display: flex; align-items: center;
+  justify-content: space-between; height: 70px;
+  transition: background var(--transition);
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-icon { font-size: 1.8rem; }
+.nav-logo-text { font-family: 'Oswald', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--white); letter-spacing: 1px; }
+.nav-logo-text span { color: var(--gold); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-family: 'Barlow', sans-serif; font-weight: 500; font-size: 0.9rem; letter-spacing: 0.5px; text-transform: uppercase; transition: color var(--transition); }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { background: var(--gold); color: var(--navy); font-family: 'Oswald', sans-serif; font-weight: 700; padding: 10px 22px; border-radius: var(--radius); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; transition: all var(--transition); }
+.nav-cta:hover { background: var(--gold-bright); transform: translateY(-1px); }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.nav-hamburger span { display: block; width: 26px; height: 2px; background: var(--white); border-radius: 2px; transition: all var(--transition); }
+
+/* ============================================================
+   HERO
+============================================================ */
+#hero {
+  min-height: 100vh; position: relative; display: flex; align-items: center;
+  overflow: hidden; padding-top: 70px;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(0,153,255,0.12) 0%, transparent 60%),
+              radial-gradient(ellipse at 20% 80%, rgba(245,166,35,0.08) 0%, transparent 50%),
+              linear-gradient(135deg, #040d1e 0%, #07112A 50%, #0a1830 100%);
+}
+.lightning-left, .lightning-right {
+  position: absolute; width: 3px; background: linear-gradient(to bottom, transparent, var(--blue-glow), transparent);
+  opacity: 0; animation: lightning 4s infinite;
+}
+.lightning-left { left: 15%; height: 200px; top: 20%; animation-delay: 0s; }
+.lightning-right { right: 20%; height: 150px; top: 30%; animation-delay: 2.3s; }
+@keyframes lightning {
+  0%,100%{opacity:0;} 5%{opacity:1;} 10%{opacity:0;} 12%{opacity:0.7;} 15%{opacity:0;}
+}
+.hero-grid-overlay {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(0,153,255,0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,153,255,0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+.hero-content { position: relative; z-index: 2; max-width: 700px; padding: 4rem 2rem 4rem 8%; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(245,166,35,0.12); border: 1px solid rgba(245,166,35,0.4);
+  padding: 6px 16px; border-radius: 30px; margin-bottom: 1.5rem;
+  font-family: 'Barlow', sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold);
+}
+.hero-badge span { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.5;transform:scale(1.3);} }
+.hero-title {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+  font-size: clamp(3rem, 6vw, 5.5rem); line-height: 0.95;
+  text-transform: uppercase; margin-bottom: 1.5rem;
+}
+.hero-title .line1 { color: var(--white); display: block; }
+.hero-title .line2 { color: var(--gold); display: block; text-shadow: 0 0 40px rgba(245,166,35,0.5); }
+.hero-title .line3 { color: var(--white); display: block; font-size: 65%; }
+.hero-sub {
+  font-size: 1.1rem; font-weight: 300; line-height: 1.7;
+  color: rgba(255,255,255,0.75); margin-bottom: 2.5rem; max-width: 520px;
+}
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--navy); font-family: 'Oswald', sans-serif; font-weight: 700;
+  font-size: 1rem; letter-spacing: 1px; text-transform: uppercase;
+  padding: 16px 32px; border-radius: var(--radius); text-decoration: none;
+  border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 10px;
+  box-shadow: 0 8px 30px rgba(245,166,35,0.35); transition: all var(--transition);
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(245,166,35,0.5); }
+.btn-secondary {
+  background: transparent; color: var(--white);
+  font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 1rem;
+  letter-spacing: 1px; text-transform: uppercase; padding: 15px 28px;
+  border-radius: var(--radius); text-decoration: none; border: 2px solid rgba(255,255,255,0.3);
+  display: inline-flex; align-items: center; gap: 10px; transition: all var(--transition);
+}
+.btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.05); }
+.hero-stats { display: flex; gap: 2.5rem; }
+.hero-stat { }
+.hero-stat-num { font-family: 'Oswald', sans-serif; font-size: 2rem; font-weight: 700; color: var(--gold); line-height: 1; }
+.hero-stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 1px; margin-top: 3px; }
+.hero-visual {
+  position: absolute; right: 0; top: 0; bottom: 0; width: 45%;
+  background: linear-gradient(135deg, rgba(0,153,255,0.08) 0%, rgba(245,166,35,0.05) 100%);
+  clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-logo-big {
+  font-family: 'Oswald', sans-serif; font-size: 6rem; font-weight: 700;
+  color: rgba(255,255,255,0.04); user-select: none; white-space: nowrap;
+}
+
+/* ============================================================
+   SECTION COMMONS
+============================================================ */
+section { padding: 6rem 2rem; }
+.container { max-width: 1200px; margin: 0 auto; }
+.section-label {
+  font-family: 'Barlow', sans-serif; font-size: 0.75rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 3px; color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+.section-title {
+  font-family: 'Oswald', sans-serif; font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700; text-transform: uppercase; color: var(--white);
+  line-height: 1.1; margin-bottom: 1rem;
+}
+.section-title span { color: var(--gold); }
+.section-subtitle { color: rgba(255,255,255,0.6); font-size: 1.05rem; line-height: 1.7; max-width: 600px; }
+.divider { width: 60px; height: 3px; background: var(--gold); margin: 1.5rem 0; border-radius: 2px; }
+
+/* ============================================================
+   SERVICES
+============================================================ */
+#servicios { background: var(--navy-mid); }
+.services-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem; margin-top: 3rem;
+}
+.service-card {
+  background: var(--navy-light); border: 1px solid rgba(245,166,35,0.12);
+  border-radius: 12px; padding: 2rem 1.5rem; transition: all var(--transition);
+  position: relative; overflow: hidden;
+}
+.service-card::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  transform: scaleX(0); transform-origin: left; transition: transform var(--transition);
+}
+.service-card:hover { transform: translateY(-6px); border-color: rgba(245,166,35,0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+.service-card:hover::before { transform: scaleX(1); }
+.service-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+.service-title { font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; color: var(--white); margin-bottom: 0.5rem; }
+.service-desc { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+/* ============================================================
+   ABOUT
+============================================================ */
+#nosotros { background: var(--navy); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.about-content { }
+.about-features { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+.about-feature {
+  display: flex; align-items: flex-start; gap: 1rem;
+  background: rgba(245,166,35,0.06); border: 1px solid rgba(245,166,35,0.12);
+  border-radius: var(--radius); padding: 1.2rem 1.5rem;
+}
+.about-feature-icon { font-size: 1.8rem; flex-shrink: 0; margin-top: 2px; }
+.about-feature-text h4 { font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 700; color: var(--gold); text-transform: uppercase; margin-bottom: 3px; }
+.about-feature-text p { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+.about-visual {
+  background: linear-gradient(135deg, var(--navy-mid), var(--navy-light));
+  border: 1px solid rgba(245,166,35,0.15); border-radius: 16px;
+  padding: 3rem; text-align: center;
+}
+.about-big-logo {
+  font-family: 'Oswald', sans-serif; font-size: 4.5rem; font-weight: 700;
+  color: var(--gold); line-height: 1; margin-bottom: 0.5rem;
+}
+.about-big-logo .ampersand { font-size: 3rem; vertical-align: middle; }
+.about-logo-sub { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: 4px; color: var(--white); border-top: 2px solid var(--gold); padding-top: 0.8rem; margin-bottom: 2rem; }
+.about-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.about-stat-box {
+  background: rgba(0,0,0,0.3); border-radius: var(--radius); padding: 1.5rem;
+  border: 1px solid rgba(245,166,35,0.1);
+}
+.about-stat-num { font-family: 'Oswald', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--gold); line-height: 1; }
+.about-stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+/* ============================================================
+   TESTIMONIOS / GARANTIA
+============================================================ */
+#garantia { background: linear-gradient(135deg, #07112A 0%, #0a1830 100%); padding: 4rem 2rem; }
+.garantia-banner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+}
+.garantia-item {
+  text-align: center; padding: 2.5rem 1.5rem;
+  background: rgba(245,166,35,0.06); border: 1px solid rgba(245,166,35,0.15);
+  border-radius: 12px;
+}
+.garantia-icon { font-size: 3rem; margin-bottom: 1rem; }
+.garantia-title { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--gold); text-transform: uppercase; margin-bottom: 0.5rem; }
+.garantia-text { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.7; }
+
+/* ============================================================
+   CONTACT
+============================================================ */
+#contacto { background: var(--navy-mid); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; }
+.contact-info { }
+.contact-item { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.contact-item-icon {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(245,166,35,0.15); border: 1px solid rgba(245,166,35,0.3);
+  display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;
+}
+.contact-item-text h4 { font-family: 'Oswald', sans-serif; font-weight: 600; color: var(--white); font-size: 0.9rem; text-transform: uppercase; }
+.contact-item-text p { font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 2px; }
+.contact-wa-btn {
+  display: flex; align-items: center; gap: 12px; background: #25D366;
+  color: var(--white); text-decoration: none; padding: 16px 28px;
+  border-radius: var(--radius); font-family: 'Oswald', sans-serif; font-weight: 700;
+  font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase;
+  margin-top: 2rem; width: fit-content; transition: all var(--transition);
+  box-shadow: 0 8px 30px rgba(37,211,102,0.3);
+}
+.contact-wa-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(37,211,102,0.5); }
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-input {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius); padding: 14px 16px; color: var(--white);
+  font-family: 'Barlow', sans-serif; font-size: 0.95rem; outline: none; width: 100%;
+  transition: border-color var(--transition);
+}
+.form-input:focus { border-color: var(--gold); }
+.form-input::placeholder { color: rgba(255,255,255,0.35); }
+textarea.form-input { resize: vertical; min-height: 120px; }
+.form-submit {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--navy); font-family: 'Oswald', sans-serif; font-weight: 700;
+  font-size: 1rem; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 16px; border-radius: var(--radius); border: none; cursor: pointer;
+  transition: all var(--transition); box-shadow: 0 8px 25px rgba(245,166,35,0.3);
+}
+.form-submit:hover { transform: translateY(-2px); }
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer {
+  background: #040b1a; border-top: 1px solid rgba(245,166,35,0.15);
+  padding: 3rem 2rem; text-align: center;
+}
+.footer-logo { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+.footer-logo span { color: var(--gold); }
+.footer-text { font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-top: 0.5rem; }
+
+/* ============================================================
+   FLOATING WHATSAPP
+============================================================ */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: #25D366; color: var(--white); display: flex;
+  align-items: center; justify-content: center; font-size: 1.8rem;
+  text-decoration: none; box-shadow: 0 8px 30px rgba(37,211,102,0.5);
+  animation: wa-bounce 2s infinite; transition: transform var(--transition);
+}
+.wa-float:hover { transform: scale(1.1); animation: none; }
+@keyframes wa-bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
+.wa-float-tooltip {
+  position: absolute; right: 70px; background: var(--navy-light); color: var(--white);
+  padding: 8px 14px; border-radius: var(--radius); font-family: 'Barlow', sans-serif;
+  font-size: 0.85rem; font-weight: 500; white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4); opacity: 0; transition: opacity var(--transition);
+  border: 1px solid rgba(245,166,35,0.2); pointer-events: none;
+}
+.wa-float:hover .wa-float-tooltip { opacity: 1; }
+
+/* ============================================================
+   PRINTABLE PACK NAV
+============================================================ */
+.pack-nav {
+  background: #040b1a; border-top: 3px solid var(--gold);
+  padding: 2rem; text-align: center;
+}
+.pack-nav h2 { font-family: 'Oswald', sans-serif; font-size: 2rem; font-weight: 700; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; }
+.pack-tabs { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.pack-tab {
+  background: var(--navy-mid); border: 2px solid rgba(245,166,35,0.3);
+  color: var(--white); font-family: 'Oswald', sans-serif; font-weight: 600;
+  font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase;
+  padding: 10px 20px; border-radius: var(--radius); cursor: pointer;
+  transition: all var(--transition);
+}
+.pack-tab:hover, .pack-tab.active { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+.pack-section { display: none; }
+.pack-section.active { display: block; }
+
+/* ============================================================
+   BUSINESS CARD
+============================================================ */
+.card-wrapper {
+  display: flex; gap: 3rem; justify-content: center; align-items: flex-start;
+  flex-wrap: wrap; padding: 4rem 2rem;
+  background: #1a1a2e;
+}
+.card-container { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.card-label { font-family: 'Barlow', sans-serif; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--gray); }
+/* 85×55mm at 96dpi ≈ 322×208px */
+.business-card {
+  width: 322px; height: 208px; border-radius: 12px; overflow: hidden; position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+}
+/* FRONTAL */
+.card-front {
+  background: linear-gradient(135deg, #07112A 0%, #0d1f47 60%, #071528 100%);
+  display: flex; flex-direction: column; padding: 20px 22px; height: 100%;
+  border: 1px solid rgba(245,166,35,0.2);
+}
+.card-front-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.card-logo-small {
+  font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700;
+  color: var(--white); line-height: 0.9;
+}
+.card-logo-small .cb { font-size: 1.8rem; color: var(--gold); }
+.card-logo-small .elec { font-size: 0.65rem; letter-spacing: 3px; color: rgba(255,255,255,0.7); display: block; border-top: 1px solid var(--gold); padding-top: 2px; margin-top: 2px; }
+.card-bolt-deco { font-size: 2rem; color: var(--gold); opacity: 0.6; }
+.card-divider { height: 1px; background: linear-gradient(90deg, var(--gold), transparent); margin-bottom: 10px; }
+.card-name { font-family: 'Oswald', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--white); text-transform: uppercase; letter-spacing: 0.5px; }
+.card-role { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); margin-bottom: 10px; }
+.card-contacts { display: flex; flex-direction: column; gap: 3px; margin-bottom: 8px; }
+.card-contact-line { font-size: 0.7rem; color: rgba(255,255,255,0.75); display: flex; align-items: center; gap: 5px; }
+.card-services { font-size: 0.6rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); text-align: center; border-top: 1px solid rgba(245,166,35,0.2); padding-top: 7px; margin-top: auto; }
+/* TRASERA */
+.card-back {
+  background: linear-gradient(135deg, #061020 0%, #0d1f47 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 20px; height: 100%; position: relative; overflow: hidden;
+  border: 1px solid rgba(245,166,35,0.2);
+}
+.card-back-bolt { position: absolute; font-size: 8rem; color: rgba(245,166,35,0.06); top: -10px; right: -15px; }
+.card-back-tagline { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--white); text-transform: uppercase; text-align: center; line-height: 1.1; }
+.card-back-tagline span { color: var(--gold); }
+.card-back-sub { font-size: 0.6rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.5); margin: 8px 0; }
+.card-back-phone { font-family: 'Oswald', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--gold); }
+.card-back-badges { display: flex; gap: 8px; margin-top: 10px; }
+.card-back-badge { font-size: 0.55rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: rgba(255,255,255,0.6); padding: 3px 7px; border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; }
+
+/* ============================================================
+   A5 FLYER
+============================================================ */
+.flyer-wrapper { padding: 4rem 2rem; background: #1a1a2e; display: flex; justify-content: center; }
+/* A5 148×210mm at 96dpi ≈ 559×794px */
+.flyer-a5 {
+  width: 559px; min-height: 794px; background: var(--navy);
+  border-radius: 12px; overflow: hidden; position: relative;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+  display: flex; flex-direction: column;
+}
+.flyer-header {
+  background: linear-gradient(135deg, #07112A 0%, #0d2050 100%);
+  padding: 28px 28px 20px; position: relative; overflow: hidden;
+  border-bottom: 3px solid var(--gold);
+}
+.flyer-bg-bolt { position: absolute; right: 20px; top: -10px; font-size: 9rem; opacity: 0.05; color: var(--blue-glow); }
+.flyer-top-row { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+.flyer-logo-mark {
+  background: var(--gold); color: var(--navy); font-family: 'Oswald', sans-serif;
+  font-weight: 900; font-size: 1.8rem; padding: 8px 14px; border-radius: 8px; line-height: 1;
+}
+.flyer-logo-text { }
+.flyer-logo-text .fl-name { font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); letter-spacing: 2px; }
+.flyer-logo-text .fl-sub { font-size: 0.65rem; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; }
+.flyer-headline { font-family: 'Barlow Condensed', sans-serif; font-size: 2.8rem; font-weight: 900; color: var(--white); text-transform: uppercase; line-height: 0.95; }
+.flyer-headline .gold { color: var(--gold); }
+.flyer-headline .small { font-size: 1.4rem; font-weight: 700; color: rgba(255,255,255,0.8); }
+.flyer-body { padding: 20px 28px; flex: 1; }
+.flyer-services-title { font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 12px; }
+.flyer-service-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.flyer-service-item { display: flex; align-items: flex-start; gap: 10px; }
+.flyer-service-bolt { color: var(--gold); font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+.flyer-service-info h5 { font-family: 'Oswald', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--white); text-transform: uppercase; }
+.flyer-service-info p { font-size: 0.72rem; color: rgba(255,255,255,0.55); line-height: 1.4; }
+.flyer-desc-box {
+  background: rgba(245,166,35,0.06); border: 1px solid rgba(245,166,35,0.2);
+  border-radius: 8px; padding: 14px 16px; margin-bottom: 20px;
+}
+.flyer-desc-box p { font-size: 0.78rem; color: rgba(255,255,255,0.7); line-height: 1.7; }
+.flyer-badges { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.flyer-badge {
+  display: flex; align-items: center; gap: 5px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px; padding: 5px 12px;
+  font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: rgba(255,255,255,0.7);
+}
+.flyer-footer {
+  background: var(--gold); padding: 18px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.flyer-footer-cta { font-family: 'Oswald', sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--navy); text-transform: uppercase; line-height: 1.1; }
+.flyer-footer-phone { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--navy); display: flex; align-items: center; gap: 8px; }
+.flyer-footer-sub { font-size: 0.65rem; font-weight: 600; color: rgba(0,17,42,0.7); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+/* ============================================================
+   UNIFORM / LOGO PRINT
+============================================================ */
+.uniform-wrapper { padding: 4rem 2rem; background: #1a1a2e; }
+.uniform-grid { display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap; }
+.uniform-piece { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+.uniform-label { font-family: 'Barlow', sans-serif; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--gray); }
+/* T-SHIRT SVG */
+.shirt-container { position: relative; }
+/* LOGO BADGES */
+.logo-badge-section { padding: 3rem 2rem; background: #040b1a; }
+.logo-badge-grid { display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+.logo-badge-item { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.logo-badge-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--gray); }
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 900px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+  .hero-content { padding: 2rem 1.5rem; }
+  .hero-visual { display: none; }
+  .hero-stats { gap: 1.5rem; }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .garantia-banner { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .business-card { width: 280px; height: 181px; }
+  .flyer-a5 { width: 100%; max-width: 420px; }
+}
+
+/* PRINT HELPERS */
+@media print {
+  .pack-nav, footer, .wa-float { display: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+============================================================ -->
+<nav id="navbar">
+  <a class="nav-logo" href="#hero">
+    <span class="nav-logo-icon">⚡</span>
+    <span class="nav-logo-text">C<span>&</span>B Electricidad</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#pack">Pack Visual</a></li>
+  </ul>
+  <a class="nav-cta" href="https://wa.me/34611520916">
+    <span>💬</span> WhatsApp
+  </a>
+  <div class="nav-hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="lightning-left"></div>
+  <div class="lightning-right"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span> Empresa Certificada · Sevilla y Alrededores
+    </div>
+    <h1 class="hero-title">
+      <span class="line1">Electricidad</span>
+      <span class="line2">Profesional</span>
+      <span class="line3">Rápida y Sin Complicaciones</span>
+    </h1>
+    <p class="hero-sub">
+      Instalaciones, averías y mantenimiento eléctrico en Sevilla y alrededores. 
+      Más de 20 años de experiencia con precios competitivos y garantía incluida.
+    </p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#contacto">⚡ Solicitar Presupuesto</a>
+      <a class="btn-secondary" href="https://wa.me/34611520916">💬 WhatsApp Directo</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">20+</div>
+        <div class="hero-stat-label">Años de experiencia</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">1 año</div>
+        <div class="hero-stat-label">Garantía total</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">24/7</div>
+        <div class="hero-stat-label">Averías urgentes</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-logo-big">C&B⚡</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES
+============================================================ -->
+<section id="servicios">
+  <div class="container">
+    <p class="section-label">Lo que hacemos</p>
+    <h2 class="section-title">Nuestros <span>Servicios</span></h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">Soluciones eléctricas completas para viviendas, locales comerciales, comunidades y exterior.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🏗️</span>
+        <div class="service-title">Instalaciones</div>
+        <p class="service-desc">Viviendas, locales y reformas completas. Proyecto y ejecución con todos los certificados oficiales.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">⚡</span>
+        <div class="service-title">Averías Urgentes</div>
+        <p class="service-desc">Servicio 24 h. Diagnóstico inmediato y reparación rápida para que no pierdas ni un minuto.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">💡</span>
+        <div class="service-title">Iluminación LED</div>
+        <p class="service-desc">Ahorra hasta un 70 % en tu factura. Instalamos sistemas LED eficientes para interior y exterior.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🔧</span>
+        <div class="service-title">Mantenimiento</div>
+        <p class="service-desc">Comunidades, empresas y particulares. Contratos de mantenimiento preventivo y correctivo.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">📋</span>
+        <div class="service-title">Boletines Eléctricos</div>
+        <p class="service-desc">Tramitación de boletines oficiales y certificados de instalación ante Industria.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT US
+============================================================ -->
+<section id="nosotros">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-content">
+        <p class="section-label">Quiénes Somos</p>
+        <h2 class="section-title">Electricistas <span>de Confianza</span> en Sevilla</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">
+          C&B Electricidad es una empresa andaluza con más de 20 años de experiencia en instalaciones eléctricas de interior y exterior. Nacimos en Sevilla y crecimos de la mano de cada cliente al que hemos ayudado.
+        </p>
+        <p class="section-subtitle" style="margin-top:1rem;">
+          Nuestro compromiso es claro: trabajo bien hecho, presupuesto sin sorpresas y garantía real. No subcontratamos: cada obra la ejecutamos nosotros mismos.
+        </p>
+        <div class="about-features">
+          <div class="about-feature">
+            <span class="about-feature-icon">🏆</span>
+            <div class="about-feature-text">
+              <h4>Más de 20 Años de Experiencia</h4>
+              <p>Empresa familiar andaluza con cientos de instalaciones completadas con éxito en toda la provincia de Sevilla.</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <span class="about-feature-icon">🛡️</span>
+            <div class="about-feature-text">
+              <h4>Garantía 1 Año — Materiales y Mano de Obra</h4>
+              <p>Garantizamos todos nuestros trabajos durante 12 meses. Si algo falla, volvemos sin coste adicional.</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <span class="about-feature-icon">💰</span>
+            <div class="about-feature-text">
+              <h4>Precios Muy Competitivos</h4>
+              <p>Presupuesto gratuito y sin compromiso. Ajustamos el precio sin sacrificar calidad ni seguridad.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-big-logo">C<span class="ampersand">&</span>B<br><span style="color:var(--gold);font-size:2rem;">⚡</span></div>
+        <div class="about-logo-sub">ELECTRICIDAD</div>
+        <div class="about-stats-grid">
+          <div class="about-stat-box">
+            <div class="about-stat-num">20+</div>
+            <div class="about-stat-label">Años de experiencia</div>
+          </div>
+          <div class="about-stat-box">
+            <div class="about-stat-num">1 año</div>
+            <div class="about-stat-label">Garantía incluida</div>
+          </div>
+          <div class="about-stat-box">
+            <div class="about-stat-num">100%</div>
+            <div class="about-stat-label">Trabajos propios</div>
+          </div>
+          <div class="about-stat-box">
+            <div class="about-stat-num">24/7</div>
+            <div class="about-stat-label">Servicio urgente</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GARANTIA STRIP
+============================================================ -->
+<div id="garantia">
+  <div class="garantia-banner">
+    <div class="garantia-item">
+      <div class="garantia-icon">⚡</div>
+      <div class="garantia-title">Respuesta Rápida</div>
+      <p class="garantia-text">Atendemos tu consulta en menos de 2 horas y programamos visita el mismo día siempre que sea posible.</p>
+    </div>
+    <div class="garantia-item">
+      <div class="garantia-icon">💰</div>
+      <div class="garantia-title">Presupuesto Gratis</div>
+      <p class="garantia-text">Sin coste ni compromiso. Valora nuestra propuesta con calma y decide con toda la información.</p>
+    </div>
+    <div class="garantia-item">
+      <div class="garantia-icon">🛡️</div>
+      <div class="garantia-title">Garantía Total</div>
+      <p class="garantia-text">12 meses de garantía en materiales y mano de obra. Trabajamos con las mejores marcas del sector.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     CONTACT
+============================================================ -->
+<section id="contacto">
+  <div class="container">
+    <p class="section-label">Contacta Ahora</p>
+    <h2 class="section-title">¿Tienes un <span>Problema Eléctrico?</span></h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">Escríbenos o llámanos. Respondemos rápido y sin compromiso.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-item-icon">👤</div>
+          <div class="contact-item-text">
+            <h4>Jesús Campos</h4>
+            <p>Electricista Profesional</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div class="contact-item-text">
+            <h4>Teléfono</h4>
+            <p>611 52 09 16</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <div class="contact-item-text">
+            <h4>Email</h4>
+            <p>jesus@cybelectricidad.es</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div class="contact-item-text">
+            <h4>Zona de Trabajo</h4>
+            <p>Sevilla y alrededores</p>
+          </div>
+        </div>
+        <a class="contact-wa-btn" href="https://wa.me/34611520916">
+          <span>💬</span> Escríbeme por WhatsApp
+        </a>
+      </div>
+      <form class="contact-form" onsubmit="handleForm(event)">
+        <div class="form-row">
+          <input class="form-input" type="text" placeholder="Nombre" required>
+          <input class="form-input" type="tel" placeholder="Teléfono">
+        </div>
+        <input class="form-input" type="email" placeholder="Email">
+        <textarea class="form-input" placeholder="Describe tu problema eléctrico..." required></textarea>
+        <button class="form-submit" type="submit">⚡ Enviar Mensaje</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PACK VISUAL SECTION
+============================================================ -->
+<div id="pack" class="pack-nav">
+  <h2>⚡ Pack Visual C&B</h2>
+  <div class="pack-tabs">
+    <button class="pack-tab active" onclick="showPack('tarjeta')">💳 Tarjeta de Visita</button>
+    <button class="pack-tab" onclick="showPack('flyer')">📄 Flyer A5</button>
+    <button class="pack-tab" onclick="showPack('uniformes')">👕 Uniformes & Logos</button>
+  </div>
+</div>
+
+<!-- BUSINESS CARD -->
+<div id="pack-tarjeta" class="pack-section active" style="background:#1a1a2e;">
+  <div class="card-wrapper">
+    <div class="card-container">
+      <span class="card-label">Frontal</span>
+      <div class="business-card">
+        <div class="card-front">
+          <div class="card-front-top">
+            <div class="card-logo-small">
+              <span class="cb">C&B</span>
+              <span class="elec">ELECTRICIDAD</span>
+            </div>
+            <div class="card-bolt-deco">⚡</div>
+          </div>
+          <div class="card-divider"></div>
+          <div class="card-name">Jesús Campos</div>
+          <div class="card-role">Electricista Profesional</div>
+          <div class="card-contacts">
+            <div class="card-contact-line">📞 611 52 09 16</div>
+            <div class="card-contact-line">✉️ jesus@cybelectricidad.es</div>
+            <div class="card-contact-line">📍 Sevilla y alrededores</div>
+            <div class="card-contact-line">🌐 www.cybelectricidad.es</div>
+          </div>
+          <div class="card-services">Instalaciones · Averías · Mantenimiento · Iluminación LED</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-container">
+      <span class="card-label">Trasera</span>
+      <div class="business-card">
+        <div class="card-back">
+          <div class="card-back-bolt">⚡</div>
+          <div class="card-back-tagline">Listo para<br><span>cualquier avería</span></div>
+          <div class="card-back-sub">Rápido · Profesional · de Confianza</div>
+          <div class="card-back-phone">⚡ 611 52 09 16</div>
+          <div class="card-back-badges">
+            <span class="card-back-badge">20 años</span>
+            <span class="card-back-badge">Garantía 1 año</span>
+            <span class="card-back-badge">Sevilla</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;padding:1rem 2rem 3rem;color:rgba(255,255,255,0.4);font-size:0.8rem;">
+    Tamaño real: 85 × 55 mm — Listo para imprenta
+  </div>
+</div>
+
+<!-- FLYER A5 -->
+<div id="pack-flyer" class="pack-section" style="background:#1a1a2e;">
+  <div class="flyer-wrapper">
+    <div class="flyer-a5">
+      <div class="flyer-header">
+        <div class="flyer-bg-bolt">⚡</div>
+        <div class="flyer-top-row">
+          <div class="flyer-logo-mark">C&B</div>
+          <div class="flyer-logo-text">
+            <div class="fl-name">ELECTRICIDAD</div>
+            <div class="fl-sub">Empresa Certificada · Sevilla</div>
+          </div>
+        </div>
+        <div class="flyer-headline">
+          ¿Problemas<br><span class="gold">Eléctricos?</span><br>
+          <span class="small">Yo te lo Soluciono ⚡</span>
+        </div>
+      </div>
+      <div class="flyer-body">
+        <div class="flyer-services-title">Nuestros Servicios</div>
+        <div class="flyer-service-list">
+          <div class="flyer-service-item">
+            <span class="flyer-service-bolt">⚡</span>
+            <div class="flyer-service-info">
+              <h5>Instalaciones Eléctricas</h5>
+              <p>Viviendas, locales, reformas completas y proyectos de nueva construcción.</p>
+            </div>
+          </div>
+          <div class="flyer-service-item">
+            <span class="flyer-service-bolt">⚡</span>
+            <div class="flyer-service-info">
+              <h5>Averías Urgentes 24 h</h5>
+              <p>Servicio rápido, diagnóstico inmediato. Disponibles cualquier día y hora.</p>
+            </div>
+          </div>
+          <div class="flyer-service-item">
+            <span class="flyer-service-bolt">⚡</span>
+            <div class="flyer-service-info">
+              <h5>Iluminación LED</h5>
+              <p>Ahorro energético garantizado. Interior, exterior, jardines e iluminación decorativa.</p>
+            </div>
+          </div>
+          <div class="flyer-service-item">
+            <span class="flyer-service-bolt">⚡</span>
+            <div class="flyer-service-info">
+              <h5>Mantenimiento &amp; Boletines</h5>
+              <p>Comunidades, empresas y particulares. Certificados oficiales para Industria.</p>
+            </div>
+          </div>
+        </div>
+        <div class="flyer-desc-box">
+          <p>
+            Empresa andaluza con más de <strong style="color:var(--gold)">20 años de experiencia</strong> en instalaciones eléctricas de interior y exterior. Precios muy competitivos. Garantía de <strong style="color:var(--gold)">1 año en materiales y mano de obra</strong>. Trabajos propios, sin subcontratar.
+          </p>
+        </div>
+        <div class="flyer-badges">
+          <span class="flyer-badge">⚡ Respuesta Rápida</span>
+          <span class="flyer-badge">💰 Presupuesto Gratis</span>
+          <span class="flyer-badge">🛡️ Garantía 1 año</span>
+          <span class="flyer-badge">✅ Certificado Oficial</span>
+        </div>
+      </div>
+      <div class="flyer-footer">
+        <div>
+          <div class="flyer-footer-cta">¡Escríbeme ahora<br>por WhatsApp!</div>
+          <div class="flyer-footer-sub">Presupuesto sin compromiso</div>
+        </div>
+        <div class="flyer-footer-phone">💬 611 52 09 16</div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;padding:1rem 2rem 3rem;color:rgba(255,255,255,0.4);font-size:0.8rem;">
+    Formato A5 (148 × 210 mm) — Listo para imprenta o compartir por WhatsApp
+  </div>
+</div>
+
+<!-- UNIFORMS & LOGOS -->
+<div id="pack-uniformes" class="pack-section" style="background:#1a1a2e;padding:4rem 2rem;">
+  <div style="text-align:center;margin-bottom:3rem;">
+    <p class="section-label" style="text-align:center;">Ropa de Trabajo</p>
+    <h2 class="section-title" style="text-align:center;">Uniformes & <span>Logos Imprimibles</span></h2>
+    <div class="divider" style="margin:1rem auto;"></div>
+    <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;">Diseños para serigrafía o bordado. Fondo marino oscuro con logo dorado.</p>
+  </div>
+  <div class="uniform-grid">
+
+    <!-- CAMISETA -->
+    <div class="uniform-piece">
+      <span class="uniform-label">Camiseta de Trabajo</span>
+      <svg width="220" height="240" viewBox="0 0 220 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Body -->
+        <path d="M50 60 L30 80 L10 70 L5 130 L30 130 L30 230 L190 230 L190 130 L215 130 L210 70 L190 80 L170 60 Q145 45 110 45 Q75 45 50 60Z" fill="#0D1E40" stroke="#F5A623" stroke-width="1.5"/>
+        <!-- Collar -->
+        <path d="M85 48 Q110 60 135 48" fill="none" stroke="#F5A623" stroke-width="1.5"/>
+        <!-- Sleeves -->
+        <path d="M50 60 L10 70 L5 130 L30 130 L30 80" fill="#0A1830" stroke="#F5A623" stroke-width="1"/>
+        <path d="M170 60 L210 70 L215 130 L190 130 L190 80" fill="#0A1830" stroke="#F5A623" stroke-width="1"/>
+        <!-- Logo on chest -->
+        <rect x="75" y="90" width="70" height="50" rx="5" fill="rgba(245,166,35,0.1)" stroke="rgba(245,166,35,0.3)" stroke-width="0.5"/>
+        <text x="110" y="112" text-anchor="middle" font-family="Oswald,sans-serif" font-size="16" font-weight="700" fill="#F5A623">C&amp;B</text>
+        <text x="110" y="126" text-anchor="middle" font-family="Oswald,sans-serif" font-size="7" font-weight="600" fill="white" letter-spacing="2">ELECTRICIDAD</text>
+        <text x="110" y="135" text-anchor="middle" font-family="Arial" font-size="8" fill="#F5A623">⚡</text>
+        <!-- Bottom text -->
+        <text x="110" y="195" text-anchor="middle" font-family="Oswald,sans-serif" font-size="8" fill="rgba(245,166,35,0.5)" letter-spacing="1">INSTALACIONES · AVERÍAS · MANTENIMIENTO</text>
+        <text x="110" y="207" text-anchor="middle" font-family="Oswald,sans-serif" font-size="7" fill="rgba(255,255,255,0.3)" letter-spacing="0.5">611 52 09 16</text>
+      </svg>
+    </div>
+
+    <!-- POLO / UNIFORME -->
+    <div class="uniform-piece">
+      <span class="uniform-label">Polo / Uniforme</span>
+      <svg width="220" height="260" viewBox="0 0 220 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Body -->
+        <path d="M50 70 L30 95 L10 80 L5 145 L32 145 L32 240 L188 240 L188 145 L215 145 L210 80 L190 95 L170 70 Q145 52 110 52 Q75 52 50 70Z" fill="#0D1E40" stroke="#F5A623" stroke-width="1.5"/>
+        <!-- Collar polo -->
+        <path d="M88 55 L98 80 L110 75 L122 80 L132 55" fill="#0a1830" stroke="#F5A623" stroke-width="1.2"/>
+        <!-- Placket -->
+        <line x1="110" y1="75" x2="110" y2="100" stroke="rgba(245,166,35,0.4)" stroke-width="1"/>
+        <!-- Sleeves -->
+        <path d="M50 70 L10 80 L5 145 L32 145 L32 95" fill="#0A1830" stroke="#F5A623" stroke-width="1"/>
+        <path d="M170 70 L210 80 L215 145 L188 145 L188 95" fill="#0A1830" stroke="#F5A623" stroke-width="1"/>
+        <!-- Stripe on sleeves -->
+        <line x1="5" y1="118" x2="32" y2="118" stroke="#F5A623" stroke-width="2"/>
+        <line x1="188" y1="118" x2="215" y2="118" stroke="#F5A623" stroke-width="2"/>
+        <!-- Logo chest left -->
+        <rect x="62" y="100" width="55" height="38" rx="4" fill="rgba(245,166,35,0.08)" stroke="rgba(245,166,35,0.25)" stroke-width="0.5"/>
+        <text x="89" y="116" text-anchor="middle" font-family="Oswald,sans-serif" font-size="13" font-weight="700" fill="#F5A623">C&amp;B</text>
+        <text x="89" y="128" text-anchor="middle" font-family="Oswald,sans-serif" font-size="6" font-weight="600" fill="white" letter-spacing="1.5">ELECTRICIDAD</text>
+        <text x="89" y="134" text-anchor="middle" font-family="Arial" font-size="6" fill="#F5A623">⚡</text>
+        <!-- Reflective strips bottom -->
+        <rect x="32" y="205" width="156" height="8" rx="2" fill="rgba(245,166,35,0.25)" stroke="none"/>
+        <rect x="32" y="218" width="156" height="8" rx="2" fill="rgba(245,166,35,0.25)" stroke="none"/>
+      </svg>
+    </div>
+
+    <!-- LOGO CIRCULAR (para camiseta) -->
+    <div class="uniform-piece">
+      <span class="uniform-label">Logo Circular — Bordado</span>
+      <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="90" cy="90" r="85" fill="#07112A" stroke="#F5A623" stroke-width="3"/>
+        <circle cx="90" cy="90" r="78" fill="none" stroke="rgba(245,166,35,0.3)" stroke-width="1" stroke-dasharray="4 3"/>
+        <!-- Top arc text path -->
+        <path id="topArc" d="M 20,90 A 70,70 0 0,1 160,90" fill="none"/>
+        <text font-family="Oswald,sans-serif" font-size="11" font-weight="700" fill="#F5A623" letter-spacing="2">
+          <textPath href="#topArc" startOffset="15%">ELECTRICIDAD PROFESIONAL</textPath>
+        </text>
+        <!-- Bottom arc text path -->
+        <path id="botArc" d="M 20,90 A 70,70 0 0,0 160,90" fill="none"/>
+        <text font-family="Oswald,sans-serif" font-size="10" font-weight="600" fill="rgba(255,255,255,0.7)" letter-spacing="1.5">
+          <textPath href="#botArc" startOffset="10%">SEVILLA · 611 52 09 16</textPath>
+        </text>
+        <!-- Center -->
+        <text x="90" y="82" text-anchor="middle" font-family="Oswald,sans-serif" font-size="30" font-weight="900" fill="#F5A623">C&amp;B</text>
+        <text x="90" y="100" text-anchor="middle" font-family="Oswald,sans-serif" font-size="9" font-weight="700" fill="white" letter-spacing="3">⚡ 20 AÑOS ⚡</text>
+      </svg>
+    </div>
+
+  </div>
+
+  <!-- LOGO BADGE VARIANTS -->
+  <div class="logo-badge-section" style="margin-top:3rem;border-radius:16px;overflow:hidden;">
+    <h3 style="text-align:center;font-family:'Oswald',sans-serif;font-size:1.2rem;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:2rem;">Variantes de Logo para Impresión</h3>
+    <div class="logo-badge-grid">
+
+      <!-- BADGE 1: Rectangular dark -->
+      <div class="logo-badge-item">
+        <span class="logo-badge-label">Rectangular — Oscuro</span>
+        <svg width="240" height="90" viewBox="0 0 240 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="240" height="90" rx="8" fill="#07112A"/>
+          <rect x="1" y="1" width="238" height="88" rx="7" fill="none" stroke="#F5A623" stroke-width="1.5"/>
+          <text x="75" y="42" text-anchor="middle" font-family="Oswald,sans-serif" font-size="32" font-weight="900" fill="#F5A623">C&amp;B</text>
+          <text x="75" y="55" text-anchor="middle" font-family="Oswald,sans-serif" font-size="8" font-weight="600" fill="white" letter-spacing="3">ELECTRICIDAD</text>
+          <line x1="110" y1="15" x2="110" y2="75" stroke="rgba(245,166,35,0.3)" stroke-width="1"/>
+          <text x="175" y="35" text-anchor="middle" font-family="Oswald,sans-serif" font-size="9" font-weight="700" fill="#F5A623" letter-spacing="1">INSTALACIONES</text>
+          <text x="175" y="48" text-anchor="middle" font-family="Oswald,sans-serif" font-size="9" font-weight="700" fill="rgba(255,255,255,0.7)" letter-spacing="1">AVERÍAS · MANT.</text>
+          <text x="175" y="62" text-anchor="middle" font-family="Oswald,sans-serif" font-size="8" fill="#F5A623" letter-spacing="0.5">⚡ 611 52 09 16</text>
+        </svg>
+      </div>
+
+      <!-- BADGE 2: Gold on dark -->
+      <div class="logo-badge-item">
+        <span class="logo-badge-label">Sello — Dorado</span>
+        <svg width="130" height="130" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="130" height="130" rx="10" fill="#F5A623"/>
+          <rect x="6" y="6" width="118" height="118" rx="7" fill="none" stroke="#07112A" stroke-width="2"/>
+          <text x="65" y="55" text-anchor="middle" font-family="Oswald,sans-serif" font-size="30" font-weight="900" fill="#07112A">C&amp;B</text>
+          <text x="65" y="68" text-anchor="middle" font-family="Oswald,sans-serif" font-size="7" font-weight="700" fill="#07112A" letter-spacing="2">ELECTRICIDAD</text>
+          <line x1="20" y1="76" x2="110" y2="76" stroke="#07112A" stroke-width="1"/>
+          <text x="65" y="91" text-anchor="middle" font-family="Oswald,sans-serif" font-size="7" fill="#07112A" letter-spacing="1">SEVILLA · 20 AÑOS</text>
+          <text x="65" y="106" text-anchor="middle" font-family="Oswald,sans-serif" font-size="9" font-weight="700" fill="#07112A">⚡ GARANTÍA 1 AÑO</text>
+        </svg>
+      </div>
+
+      <!-- BADGE 3: Minimal -->
+      <div class="logo-badge-item">
+        <span class="logo-badge-label">Minimal — Blanco</span>
+        <svg width="160" height="80" viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="160" height="80" rx="6" fill="#0a1830"/>
+          <text x="55" y="38" text-anchor="middle" font-family="Oswald,sans-serif" font-size="28" font-weight="900" fill="white">C&amp;B</text>
+          <text x="55" y="52" text-anchor="middle" font-family="Oswald,sans-serif" font-size="7" fill="#F5A623" letter-spacing="3">ELECTRICIDAD</text>
+          <rect x="100" y="15" width="2" height="50" rx="1" fill="#F5A623" opacity="0.5"/>
+          <text x="130" y="42" text-anchor="middle" font-family="Arial" font-size="24" fill="#F5A623">⚡</text>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:3rem;padding:1.5rem;background:rgba(245,166,35,0.06);border:1px solid rgba(245,166,35,0.15);border-radius:12px;max-width:700px;margin-left:auto;margin-right:auto;">
+    <p style="font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem;">⚡ Nota para Imprenta</p>
+    <p style="font-size:0.8rem;color:rgba(255,255,255,0.6);line-height:1.7;">Todos los diseños están listos en formato vectorial SVG. Para serigrafía se recomienda solicitar el archivo AI o EPS. Color Pantone de referencia: Dorado PMS 137 C · Marino PMS 289 C</p>
+  </div>
+</div>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="footer-logo">C<span>&</span>B Electricidad ⚡</div>
+  <p class="footer-text">Empresa andaluza con más de 20 años de experiencia · Sevilla y alrededores</p>
+  <p class="footer-text" style="margin-top:0.3rem;">© 2025 C&B Electricidad · Jesus@cybelectricidad.es · 611 52 09 16</p>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a class="wa-float" href="https://wa.me/34611520916" target="_blank" rel="noopener">
+  💬
+  <span class="wa-float-tooltip">¡Escríbenos por WhatsApp!</span>
+</a>
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+function showPack(section) {
+  document.querySelectorAll('.pack-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.pack-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('pack-' + section).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function toggleMenu() {
+  const links = document.querySelector('.nav-links');
+  const cta = document.querySelector('.nav-cta');
+  if (links) {
+    const visible = links.style.display === 'flex';
+    links.style.display = visible ? 'none' : 'flex';
+    links.style.flexDirection = 'column';
+    links.style.position = 'absolute';
+    links.style.top = '70px';
+    links.style.left = '0';
+    links.style.right = '0';
+    links.style.background = '#07112A';
+    links.style.padding = '1.5rem 2rem';
+    links.style.gap = '1rem';
+    links.style.borderBottom = '1px solid rgba(245,166,35,0.2)';
+  }
+}
+
+function handleForm(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = '✅ ¡Mensaje Enviado!';
+  btn.style.background = '#25D366';
+  setTimeout(() => {
+    btn.textContent = '⚡ Enviar Mensaje';
+    btn.style.background = '';
+    e.target.reset();
+  }, 3000);
+}
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  if (window.scrollY > 50) {
+    nav.style.background = 'rgba(4,11,26,0.97)';
+    nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.5)';
+  } else {
+    nav.style.background = 'rgba(7,17,42,0.92)';
+    nav.style.boxShadow = 'none';
+  }
+});
+
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.service-card, .about-feature, .garantia-item, .contact-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(30px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
